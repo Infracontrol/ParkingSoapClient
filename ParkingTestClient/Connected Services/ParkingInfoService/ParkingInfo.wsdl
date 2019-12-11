@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="ListSites">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListSitesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListSitesResult" type="tns:ArrayOfSite" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSite">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Site" nillable="true" type="tns:Site" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Site">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaxOccupancy" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Occupancy" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Hysteres" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Marginal" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Active" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ListSigns">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListSignsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListSignsResult" type="tns:ArrayOfSign" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSign">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Sign" nillable="true" type="tns:Sign" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Sign">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CurrentMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sites" type="tns:ArrayOfSite" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ListSitesSoapIn">
+    <wsdl:part name="parameters" element="tns:ListSites" />
+  </wsdl:message>
+  <wsdl:message name="ListSitesSoapOut">
+    <wsdl:part name="parameters" element="tns:ListSitesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListSignsSoapIn">
+    <wsdl:part name="parameters" element="tns:ListSigns" />
+  </wsdl:message>
+  <wsdl:message name="ListSignsSoapOut">
+    <wsdl:part name="parameters" element="tns:ListSignsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ParkingInfoSoap">
+    <wsdl:operation name="ListSites">
+      <wsdl:input message="tns:ListSitesSoapIn" />
+      <wsdl:output message="tns:ListSitesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListSigns">
+      <wsdl:input message="tns:ListSignsSoapIn" />
+      <wsdl:output message="tns:ListSignsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ParkingInfoSoap" type="tns:ParkingInfoSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListSites">
+      <soap:operation soapAction="http://tempuri.org/ListSites" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListSigns">
+      <soap:operation soapAction="http://tempuri.org/ListSigns" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ParkingInfoSoap12" type="tns:ParkingInfoSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListSites">
+      <soap12:operation soapAction="http://tempuri.org/ListSites" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListSigns">
+      <soap12:operation soapAction="http://tempuri.org/ListSigns" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ParkingInfo">
+    <wsdl:port name="ParkingInfoSoap" binding="tns:ParkingInfoSoap">
+      <soap:address location="https://online.infracontrol.com/Areas/Parking/Services/v1/ParkingInfo.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ParkingInfoSoap12" binding="tns:ParkingInfoSoap12">
+      <soap12:address location="https://online.infracontrol.com/Areas/Parking/Services/v1/ParkingInfo.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
