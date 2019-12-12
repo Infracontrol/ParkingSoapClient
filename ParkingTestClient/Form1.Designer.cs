@@ -36,6 +36,7 @@
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.buttonListSites = new System.Windows.Forms.Button();
             this.textBoxResponse = new System.Windows.Forms.TextBox();
+            this.buttonListSigns = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxUrl
@@ -92,7 +93,7 @@
             // 
             this.buttonListSites.Location = new System.Drawing.Point(535, 49);
             this.buttonListSites.Name = "buttonListSites";
-            this.buttonListSites.Size = new System.Drawing.Size(115, 52);
+            this.buttonListSites.Size = new System.Drawing.Size(115, 51);
             this.buttonListSites.TabIndex = 6;
             this.buttonListSites.Text = "List sites";
             this.buttonListSites.UseVisualStyleBackColor = true;
@@ -107,11 +108,22 @@
             this.textBoxResponse.Size = new System.Drawing.Size(634, 306);
             this.textBoxResponse.TabIndex = 7;
             // 
+            // buttonListSigns
+            // 
+            this.buttonListSigns.Location = new System.Drawing.Point(414, 49);
+            this.buttonListSigns.Name = "buttonListSigns";
+            this.buttonListSigns.Size = new System.Drawing.Size(115, 51);
+            this.buttonListSigns.TabIndex = 8;
+            this.buttonListSigns.Text = "List signs";
+            this.buttonListSigns.UseVisualStyleBackColor = true;
+            this.buttonListSigns.Click += new System.EventHandler(this.buttonListSigns_Click);
+            // 
             // TestClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(670, 450);
+            this.ClientSize = new System.Drawing.Size(664, 450);
+            this.Controls.Add(this.buttonListSigns);
             this.Controls.Add(this.textBoxResponse);
             this.Controls.Add(this.buttonListSites);
             this.Controls.Add(this.textBoxPassword);
@@ -138,6 +150,7 @@
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.Button buttonListSites;
         private System.Windows.Forms.TextBox textBoxResponse;
+        private System.Windows.Forms.Button buttonListSigns;
     }
 }
 
